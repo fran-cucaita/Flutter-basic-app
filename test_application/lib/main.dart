@@ -4,15 +4,26 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  static const String _title = 'Test app';
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+final List<String> _filtro = ['Hola', 'Doble', 'Simple'];
+var startfiltro = _filtro[0];
+//String startfiltro = "";
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('test app'),
+          title: Text(MyApp._title),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -37,14 +48,18 @@ class MyApp extends StatelessWidget {
                         margin: EdgeInsets.all(8),
                         color: Colors.white,
                         child: DropdownButton<String>(
-                          items:
-                              <String>['Doble', 'Simple'].map((String value) {
+                          value: startfiltro,
+                          items: _filtro.map((m) {
                             return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
+                              value: m,
+                              child: Text(m),
                             );
                           }).toList(),
-                          onChanged: (_) {},
+                          onChanged: (value) {
+                            print(value);
+                            startfiltro = value.toString();
+                            setState(() {});
+                          },
                         )),
                     Container(
                       margin: EdgeInsets.all(8),
