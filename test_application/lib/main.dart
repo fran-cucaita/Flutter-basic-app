@@ -1,104 +1,121 @@
 import 'package:flutter/material.dart';
+import 'package:test_application/pages/home_page.dart';
+import 'package:test_application/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  static const String _title = 'Test app';
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-final List<String> _filtro = ['Hola', 'Doble', 'Simple'];
-var startfiltro = _filtro[0];
-//String startfiltro = "";
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(MyApp._title),
-        ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 300,
-                width: 400,
-                color: Colors.red[100],
-                child: Column(
-                  children: [
-                    Text('Formulario'),
-                    Container(
-                      margin: EdgeInsets.all(8),
-                      color: Colors.white,
-                      child: TextField(
-                        onChanged: (value) {
-                          print(value);
-                        },
-                      ),
-                    ),
-                    Container(
-                        margin: EdgeInsets.all(8),
-                        color: Colors.white,
-                        child: DropdownButton<String>(
-                          value: startfiltro,
-                          items: _filtro.map((m) {
-                            return DropdownMenuItem<String>(
-                              value: m,
-                              child: Text(m),
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            print(value);
-                            startfiltro = value.toString();
-                            setState(() {});
-                          },
-                        )),
-                    Container(
-                      margin: EdgeInsets.all(8),
-                      color: Colors.white,
-                      child: TextField(),
-                    ),
-                    Container(
-                      margin: EdgeInsets.all(8),
-                      color: Colors.white,
-                      child: TextField(),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                height: 200,
-                width: 400,
-                color: Colors.blue[100],
-                child: Center(child: Text('cronometro')),
-              ),
-              Container(
-                height: 200,
-                width: 400,
-                color: Colors.red[100],
-                child: Center(child: Text('Botones de navegacion')),
-              ),
-              Container(
-                height: 200,
-                width: 400,
-                color: Colors.blue[100],
-                child: Center(child: Text('informacion')),
-              ),
-            ],
-          ),
-        ),
-      ),
+      title: "Coffee App",
+      home: HomePage(),
     );
   }
 }
+      
+
+
+
+// class MyApp extends StatefulWidget {
+//   const MyApp({Key? key}) : super(key: key);
+
+//   static const String _title = 'Test app';
+
+//   @override
+//   State<MyApp> createState() => _MyAppState();
+// }
+
+// final List<String> _filtro = ['Hola', 'Doble', 'Simple'];
+// var startfiltro = _filtro[0];
+// //String startfiltro = "";
+
+// class _MyAppState extends State<MyApp> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text(MyApp._title),
+//         ),
+//         body: SingleChildScrollView(
+//           child: Column(
+//             children: [
+//               Container(
+//                 height: 300,
+//                 width: 400,
+//                 color: Colors.red[100],
+//                 child: Column(
+//                   children: [
+//                     Text('Formulario'),
+//                     Container(
+//                       margin: EdgeInsets.all(8),
+//                       color: Colors.white,
+//                       child: TextField(
+//                         onChanged: (value) {
+//                           print(value);
+//                         },
+//                       ),
+//                     ),
+//                     Container(
+//                         margin: EdgeInsets.all(8),
+//                         color: Colors.white,
+//                         child: DropdownButton<String>(
+//                           value: startfiltro,
+//                           items: _filtro.map((m) {
+//                             return DropdownMenuItem<String>(
+//                               value: m,
+//                               child: Text(m),
+//                             );
+//                           }).toList(),
+//                           onChanged: (value) {
+//                             print(value);
+//                             startfiltro = value.toString();
+//                             setState(() {});
+//                           },
+//                         )),
+//                     Container(
+//                       margin: EdgeInsets.all(8),
+//                       color: Colors.white,
+//                       child: TextField(),
+//                     ),
+//                     Container(
+//                       margin: EdgeInsets.all(8),
+//                       color: Colors.white,
+//                       child: TextField(),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//               Container(
+//                 height: 200,
+//                 width: 400,
+//                 color: Colors.blue[100],
+//                 child: Center(child: Text('cronometro')),
+//               ),
+//               Container(
+//                 height: 200,
+//                 width: 400,
+//                 color: Colors.red[100],
+//                 child: Center(child: Text('Botones de navegacion')),
+//               ),
+//               Container(
+//                 height: 200,
+//                 width: 400,
+//                 color: Colors.blue[100],
+//                 child: Center(child: Text('informacion')),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 
