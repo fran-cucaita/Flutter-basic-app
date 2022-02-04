@@ -41,6 +41,13 @@ class DetailsPage extends StatelessWidget {
                   height: 30,
                 ),
                 Cronometro(),
+                Container(
+                  width: 300,
+                  color: Colors.red,
+                  child: TextField(
+                    onChanged: (value) => print(value),
+                  ),
+                ),
               ],
             ),
           ),

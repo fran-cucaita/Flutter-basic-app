@@ -13,6 +13,8 @@ var startfiltro = _filtro[0];
 final List<String> _ratio = ['1:1', '1:2', '1:3'];
 var startRatio = _ratio[0];
 
+int n = 0;
+
 class _CalibrateWidgetState extends State<CalibrateWidget> {
   @override
   Widget build(BuildContext context) {
@@ -34,27 +36,30 @@ class _CalibrateWidgetState extends State<CalibrateWidget> {
             width: 200,
             child: Column(
               children: [
-                Container(
-                  width: 200,
-                  color: Colors.white,
-                  child: DropdownButton<String>(
-                    value: startfiltro,
-                    items: _filtro.map((m) {
-                      return DropdownMenuItem<String>(
-                        value: m,
-                        child: Text(m),
-                      );
-                    }).toList(),
-                    onChanged: (value) {
-                      print(value);
-                      startfiltro = value.toString();
-                      setState(() {});
-                    },
-                  ),
-                ),
+                // Container(
+                //   width: 200,
+                //   color: Colors.white,
+                //   child: DropdownButton<String>(
+                //     value: startfiltro,
+                //     items: _filtro.map((m) {
+                //       return DropdownMenuItem<String>(
+                //         value: m,
+                //         child: Text(m),
+                //       );
+                //     }).toList(),
+                //     onChanged: (value) {
+                //       print(value);
+                //       startfiltro = value.toString();
+                //       setState(() {});
+                //     },
+                //   ),
+                // ),
                 Container(
                   padding: EdgeInsets.all(8),
-                  child: const TextField(
+                  child: TextField(
+                    onChanged: (value) {
+                      n = int.parse(value);
+                    },
                     decoration: InputDecoration(
                       labelText: "Ingrese el peso",
                       border: OutlineInputBorder(),
@@ -80,10 +85,18 @@ class _CalibrateWidgetState extends State<CalibrateWidget> {
                     },
                   ),
                 ),
+                ElevatedButton(
+                  onPressed: () {
+                    int valor = n * 2;
+                    print(valor);
+                  },
+                  child: Text('Calcular'),
+                ),
+
                 Container(
                   padding: EdgeInsets.all(8),
                   height: 50,
-                  child: Text("La cantidad en taza esperada es ... "),
+                  child: Text("La cantidad en taza esperada es $n"),
                 ),
               ],
             ),
