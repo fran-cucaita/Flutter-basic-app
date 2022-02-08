@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_application/pages/details_page.dart';
 import 'package:test_application/routes/routes.dart';
+import 'package:test_application/widgets/recipe_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,251 +11,127 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        //backgroundColor: Colors.blueGrey[900],
+        backgroundColor: Colors.black,
         title: Text('Home'),
       ),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(
-              child: Container(
-                height: 50,
-                width: MediaQuery.of(context).size.width * .9,
-                color: Colors.white,
-                child: Container(
-                  padding: EdgeInsets.all(8),
+            Container(
+              alignment: Alignment.topLeft,
+              padding: EdgeInsets.all(20),
+              // width: MediaQuery.of(context).size.width * 1,
+              //color: Colors.red,
+              width: 280,
+              child: Text(
+                "Find the best coffee for you",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.start,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(20),
+              color: Colors.transparent,
+              child: Center(
+                child: new Container(
+                  width: 400,
+                  decoration: new BoxDecoration(
+                    color: Colors.grey[700],
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                   child: TextField(
                     onChanged: (value) {
                       print(value);
                     },
+                    cursorColor: Colors.white,
+                    style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                      labelText: "Busqueda",
-                      border: OutlineInputBorder(),
+                      focusedBorder: InputBorder.none,
+                      prefixIcon: Icon(
+                        Icons.search_outlined,
+                      ),
+                      hintText: 'Fint your coffee',
+                      hintStyle: TextStyle(color: Colors.white),
+                      // labelText: "Busqueda",
+                      // labelStyle: TextStyle(color: Colors.white),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
                     ),
-                    keyboardType: TextInputType.number,
                   ),
                 ),
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width * 1,
-              color: Colors.blueAccent[100],
-              child: Column(
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Recetas',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      Text("Ver todas")
-                    ],
+                  Text(
+                    'Brewing coffee',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * .3,
-                    padding: EdgeInsets.symmetric(vertical: 8),
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.all(8),
-                      children: <Widget>[
-                        Container(
-                          width: 170,
-                          color: Colors.amber[600],
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 150,
-                                width: 150,
-                                margin: EdgeInsets.all(12),
-                                color: Colors.green,
-                                child: Image.asset('lib/assets/cafe.jpg'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => (DetailsPage()),
-                                      ));
-                                },
-                                child: Text('Receta'),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 170,
-                          color: Colors.amber[600],
-                          child: Column(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(12),
-                                height: 150,
-                                width: 150,
-                                color: Colors.green,
-                                child: Image.asset('lib/assets/cafe.jpg'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => (DetailsPage()),
-                                      ));
-                                },
-                                child: Text('Receta'),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 170,
-                          color: Colors.amber[600],
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 150,
-                                width: 150,
-                                margin: EdgeInsets.all(12),
-                                color: Colors.green,
-                                child: Image.asset('lib/assets/cafe.jpg'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => (DetailsPage()),
-                                      ));
-                                },
-                                child: Text('Receta'),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                  Text(
+                    "See all",
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(
-              height: 8,
+            Container(
+              height: 250,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.all(8),
+                children: <Widget>[
+                  RecipeCard(
+                    image: 'lib/assets/chemex.jpg',
+                    title: "Chemex",
+                    cups: '6',
+                  ),
+                  RecipeCard(
+                    image: 'lib/assets/V60.jpg',
+                    title: "V60",
+                    cups: '2',
+                  ),
+                  RecipeCard(
+                    image: 'lib/assets/francesa.jpg',
+                    title: "Prensa francesa",
+                    cups: '5',
+                  ),
+                ],
+              ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width * 1,
-              color: Colors.blueAccent[100],
-              child: Column(
+              margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Productos',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      Text("Ver todas")
-                    ],
+                  Text(
+                    'Tools by Category',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
                   ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * .3,
-                    padding: EdgeInsets.symmetric(vertical: 8),
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.all(8),
-                      children: <Widget>[
-                        Container(
-                          width: 170,
-                          color: Colors.amber[600],
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 150,
-                                width: 150,
-                                margin: EdgeInsets.all(12),
-                                color: Colors.green,
-                                child: Image.asset('lib/assets/cafe.jpg'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => (DetailsPage()),
-                                      ));
-                                },
-                                child: Text('Ver'),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 170,
-                          color: Colors.amber[600],
-                          child: Column(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(12),
-                                height: 150,
-                                width: 150,
-                                color: Colors.green,
-                                child: Image.asset('lib/assets/cafe.jpg'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => (DetailsPage()),
-                                      ));
-                                },
-                                child: Text('Ver'),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 170,
-                          color: Colors.amber[600],
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 150,
-                                width: 150,
-                                margin: EdgeInsets.all(12),
-                                color: Colors.green,
-                                child: Image.asset('lib/assets/cafe.jpg'),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => (DetailsPage()),
-                                      ));
-                                },
-                                child: Text('Ver'),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                  Text(
+                    "See all",
+                    style: TextStyle(
+                      color: Colors.white,
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => (DetailsPage()),
-                          ));
-                    },
-                    child: Text('Detalles'),
                   ),
                 ],
               ),
@@ -265,3 +142,139 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+//               Container(
+//                 width: MediaQuery.of(context).size.width * 1,
+//                 color: Colors.blueAccent[100],
+//                 child: Column(
+//                   children: [
+                    
+                   
+//                   ],
+//                 ),
+//               ),
+//               SizedBox(
+//                 height: 8,
+//               ),
+//               Container(
+//                 width: MediaQuery.of(context).size.width * 1,
+//                 color: Colors.blueAccent[100],
+//                 child: Column(
+//                   children: [
+//                     Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                       children: [
+//                         Text(
+//                           'Productos',
+//                           style: TextStyle(
+//                             fontSize: 20,
+//                           ),
+//                         ),
+//                         Text("Ver todas")
+//                       ],
+//                     ),
+//                     Container(
+//                       height: MediaQuery.of(context).size.height * .3,
+//                       padding: EdgeInsets.symmetric(vertical: 8),
+//                       child: ListView(
+//                         scrollDirection: Axis.horizontal,
+//                         padding: const EdgeInsets.all(8),
+//                         children: <Widget>[
+//                           Container(
+//                             width: 170,
+//                             color: Colors.amber[600],
+//                             child: Column(
+//                               children: [
+//                                 Container(
+//                                   height: 150,
+//                                   width: 150,
+//                                   margin: EdgeInsets.all(12),
+//                                   color: Colors.green,
+//                                   child: Image.asset('lib/assets/cafe.jpg'),
+//                                 ),
+//                                 ElevatedButton(
+//                                   onPressed: () {
+//                                     Navigator.push(
+//                                         context,
+//                                         MaterialPageRoute(
+//                                           builder: (context) => (DetailsPage()),
+//                                         ));
+//                                   },
+//                                   child: Text('Ver'),
+//                                 ),
+//                               ],
+//                             ),
+//                           ),
+//                           Container(
+//                             width: 170,
+//                             color: Colors.amber[600],
+//                             child: Column(
+//                               children: [
+//                                 Container(
+//                                   margin: EdgeInsets.all(12),
+//                                   height: 150,
+//                                   width: 150,
+//                                   color: Colors.green,
+//                                   child: Image.asset('lib/assets/cafe.jpg'),
+//                                 ),
+//                                 ElevatedButton(
+//                                   onPressed: () {
+//                                     Navigator.push(
+//                                         context,
+//                                         MaterialPageRoute(
+//                                           builder: (context) => (DetailsPage()),
+//                                         ));
+//                                   },
+//                                   child: Text('Ver'),
+//                                 ),
+//                               ],
+//                             ),
+//                           ),
+//                           Container(
+//                             width: 170,
+//                             color: Colors.amber[600],
+//                             child: Column(
+//                               children: [
+//                                 Container(
+//                                   height: 150,
+//                                   width: 150,
+//                                   margin: EdgeInsets.all(12),
+//                                   color: Colors.green,
+//                                   child: Image.asset('lib/assets/cafe.jpg'),
+//                                 ),
+//                                 ElevatedButton(
+//                                   onPressed: () {
+//                                     Navigator.push(
+//                                         context,
+//                                         MaterialPageRoute(
+//                                           builder: (context) => (DetailsPage()),
+//                                         ));
+//                                   },
+//                                   child: Text('Ver'),
+//                                 ),
+//                               ],
+//                             ),
+//                           ),
+//                         ],
+//                       ),
+//                     ),
+//                     ElevatedButton(
+//                       onPressed: () {
+//                         Navigator.push(
+//                             context,
+//                             MaterialPageRoute(
+//                               builder: (context) => (DetailsPage()),
+//                             ));
+//                       },
+//                       child: Text('Detalles'),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
