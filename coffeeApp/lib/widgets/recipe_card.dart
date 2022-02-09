@@ -37,7 +37,7 @@ class RecipeCard extends StatelessWidget {
             Row(
               children: [
                 SizedBox(
-                  width: 80,
+                  width: 90,
                   child: Text(
                     title,
                     textAlign: TextAlign.start,
@@ -51,7 +51,7 @@ class RecipeCard extends StatelessWidget {
                 SizedBox(
                   width: 60,
                   child: Text(
-                    '$cups tazas',
+                    '$cups cups',
                     textAlign: TextAlign.end,
                     style: const TextStyle(
                       color: Colors.white,
