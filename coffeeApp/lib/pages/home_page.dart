@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         //backgroundColor: Colors.blueGrey[900],
         backgroundColor: Colors.black,
-        title: Text('Home'),
+        // title: Text('Home'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -57,6 +57,7 @@ class HomePage extends StatelessWidget {
                       focusedBorder: InputBorder.none,
                       prefixIcon: Icon(
                         Icons.search_outlined,
+                        color: Colors.white,
                       ),
                       hintText: 'Fint your coffee',
                       hintStyle: TextStyle(color: Colors.white),
@@ -78,39 +79,49 @@ class HomePage extends StatelessWidget {
                   Text(
                     'Brewing coffee',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.orange,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "See all",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.orange,
                     ),
                   ),
                 ],
               ),
             ),
             Container(
-              height: 250,
+              height: 280,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.all(8),
                 children: <Widget>[
                   RecipeCard(
-                    image: 'lib/assets/chemex.jpg',
-                    title: "Chemex",
-                    cups: '6',
+                    image: 'lib/assets/brewing/espresso.jpg',
+                    title: "Espresso",
+                    cups: '1-2',
                   ),
                   RecipeCard(
-                    image: 'lib/assets/V60.jpg',
+                    image: 'lib/assets/brewing/v60.jpg',
                     title: "V60",
                     cups: '2',
                   ),
                   RecipeCard(
-                    image: 'lib/assets/francesa.jpg',
-                    title: "Prensa francesa",
+                    image: 'lib/assets/brewing/volturno.jpg',
+                    title: "Volturno",
+                    cups: '3',
+                  ),
+                  RecipeCard(
+                    image: 'lib/assets/brewing/prensa.jpg',
+                    title: "Prensa",
                     cups: '5',
+                  ),
+                  RecipeCard(
+                    image: 'lib/assets/brewing/chemex.jpg',
+                    title: "Chemex",
+                    cups: '6',
                   ),
                 ],
               ),
@@ -123,14 +134,14 @@ class HomePage extends StatelessWidget {
                   Text(
                     'Tools by Category',
                     style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.orange,
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "See all",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.orange,
                     ),
                   ),
                 ],

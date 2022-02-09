@@ -28,23 +28,39 @@ class RecipeCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset(
                 image,
-                width: 150,
+                width: 140,
               ),
             ),
             const SizedBox(
               height: 12,
             ),
-            SizedBox(
-              width: 130,
-              child: Text(
-                title,
-                textAlign: TextAlign.start,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
+            Row(
+              children: [
+                SizedBox(
+                  width: 80,
+                  child: Text(
+                    title,
+                    textAlign: TextAlign.start,
+                    style: const TextStyle(
+                      color: Colors.orange,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: 60,
+                  child: Text(
+                    '$cups tazas',
+                    textAlign: TextAlign.end,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
