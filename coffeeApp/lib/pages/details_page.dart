@@ -5,15 +5,17 @@ import 'package:test_application/widgets/cronometro.dart';
 import 'home_page.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({Key? key}) : super(key: key);
+  const DetailsPage({Key? key, required this.image}) : super(key: key);
 
   static const String ROUTE = '/details';
+  final String image;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(
-          title: Text('Details'),
+          backgroundColor: Colors.black,
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -21,9 +23,8 @@ class DetailsPage extends StatelessWidget {
               children: [
                 Container(
                   margin: EdgeInsets.all(16),
-                  height: 150,
-                  width: 400,
-                  child: Image.asset('lib/assets/cafe.jpg'),
+                  width: MediaQuery.of(context).size.width * .9,
+                  child: Image.asset(image),
                 ),
                 Container(
                   margin: EdgeInsets.all(16),
