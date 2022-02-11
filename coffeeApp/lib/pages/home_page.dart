@@ -103,31 +103,43 @@ class HomePage extends StatelessWidget {
                     image: 'lib/assets/brewing/espresso.jpg',
                     title: "Espresso",
                     cups: '1-2',
+                    description:
+                        "El café expreso es una forma de preparación de café originada en Italia.​ Debe su término a la obtención de esta bebida a través de una cafetera expreso.​ Se caracteriza por su rápida preparación a una alta presión y por un sabor y textura más concentrados.",
                   ),
                   RecipeCard(
                     image: 'lib/assets/brewing/v60.jpg',
                     title: "V60",
                     cups: '2',
+                    description:
+                        "v60 es.....................   .................................   .............................................",
                   ),
                   RecipeCard(
                     image: 'lib/assets/brewing/aeropress.jpg',
                     title: "Aeropress",
                     cups: '2',
+                    description:
+                        "aeropress es....................  ...............................  ................................................",
                   ),
                   RecipeCard(
                     image: 'lib/assets/brewing/volturno.jpg',
                     title: "Volturno",
                     cups: '3',
+                    description:
+                        "Volturno es ...................................................................................................",
                   ),
                   RecipeCard(
                     image: 'lib/assets/brewing/prensa.jpg',
                     title: "Prensa",
                     cups: '5',
+                    description:
+                        "prensa es ...................................................................................................",
                   ),
                   RecipeCard(
                     image: 'lib/assets/brewing/chemex.jpg',
                     title: "Chemex",
                     cups: '6',
+                    description:
+                        "Chemex es ...................................................................................................",
                   ),
                 ],
               ),

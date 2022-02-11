@@ -11,7 +11,7 @@ class _CronometroState extends State<Cronometro> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 300,
+      height: 150,
       width: 300,
       color: Colors.green[200],
       child: Text('Aca va el cronometro'),

@@ -5,11 +5,14 @@ class RecipeCard extends StatelessWidget {
   final String image;
   final String title;
   final String cups;
+  final String description;
+
   const RecipeCard({
     Key? key,
     required this.image,
     required this.title,
     required this.cups,
+    required this.description,
   }) : super(key: key);
 
   @override
@@ -36,7 +39,9 @@ class RecipeCard extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => (DetailsPage(
+                  title: title,
                   image: image,
+                  description: description,
                 )),
               ));
         },

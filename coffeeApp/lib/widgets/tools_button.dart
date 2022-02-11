@@ -69,17 +69,22 @@ class _ButtonToolsState extends State<ButtonTools> {
               selectedColor: Colors.orange,
               fillColor: Colors.grey[700],
               borderRadius: BorderRadius.circular(10),
-              borderColor: Colors.grey[700],
+              borderColor: Colors.grey[800],
             ),
           ),
           Container(
             margin: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
             width: MediaQuery.of(context).size.width * 1,
             height: 250,
-            color: Colors.white,
+            color: Colors.grey[900],
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: [ProductCard(), ProductCard(), ProductCard()],
+              children: [
+                ProductCard(),
+                ProductCard(),
+                ProductCard(),
+                ProductCard()
+              ],
             ),
           )
         ],

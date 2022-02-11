@@ -24,29 +24,35 @@ class ProductCard extends StatelessWidget {
           ),
           Row(
             children: [
-              SizedBox(
-                width: 90,
+              Container(
+                padding: EdgeInsets.all(8),
+                width: 68,
                 child: Text(
                   '100.000',
                   textAlign: TextAlign.start,
                   style: const TextStyle(
-                    color: Colors.black,
+                    color: Colors.white,
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
               SizedBox(
-                width: 60,
-                child: Text(
-                  'Carrito',
-                  textAlign: TextAlign.end,
-                  style: const TextStyle(
-                    color: Colors.orange,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                  ),
+                width: 65,
+                child: Icon(
+                  Icons.shopping_cart_outlined,
+                  color: Colors.orange,
                 ),
+
+                // Text(
+                //   'Carrito',
+                //   textAlign: TextAlign.end,
+                //   style: const TextStyle(
+                //     color: Colors.orange,
+                //     fontSize: 16,
+                //     fontWeight: FontWeight.w700,
+                //   ),
+                // ),
               ),
             ],
           ),
