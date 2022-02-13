@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_application/pages/home_page.dart';
+import 'package:test_application/pages/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Coffee App",
-      home: HomePage(),
+      home: SplashPage(),
     );
   }
 }

@@ -17,10 +17,22 @@ class DetailsPage extends StatelessWidget {
   final String title;
   final String description;
 
+  final String marca = 'MAGOLITA';
+  final String gramosmin = "17 Grs";
+  final String gramosmax = "19 Grs";
+  final String tiempo = '23 y 25 segundos';
+
   @override
   Widget build(BuildContext context) {
+    double? gramos = 0.0;
+    final double gramosTaza = gramos * 2;
+    final String strGramosTaza = gramosTaza.toString() + ' Grs';
+    final String strgramos = gramos.toString() + " Grs";
+
     return Scaffold(
       body: Stack(children: [
+        GestureDetector(
+            onTap: () => FocusScope.of(context).requestFocus(new FocusNode())),
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -126,11 +138,45 @@ class DetailsPage extends StatelessWidget {
                             margin: EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 30),
                             child: Text(
-                              'En un filtro doble coloque entre  String gramos de Café MAGOLITA.\n\n Distribuya el cafe con el cosito, presione con fuerza moderada con el tamper, coloque el filtro en su maquina espresso. recuerde pesar la taza y tarar la balanza. comienze la extraccion, cuando el peso en taza llegue a gramos*2 corte la extraccion.',
+                              'En un filtro doble coloque entre $gramosmin y $gramosmax de Café $marca.',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                               ),
+                              textAlign: TextAlign.justify,
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.symmetric(vertical: 0),
+                            padding: EdgeInsets.symmetric(horizontal: 20),
+                            height: 40,
+                            width: MediaQuery.of(context).size.width * .8,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(5),
+                            ),
+                            child: TextField(
+                              onChanged: (value) {
+                                gramos = (double.parse(value));
+                                print(gramos.toString());
+                              },
+                              decoration:
+                                  InputDecoration(hintText: ("Ingres el peso")),
+                              keyboardType: TextInputType.number,
+                            ),
+                          ),
+                          Container(
+                            alignment: Alignment.topLeft,
+                            margin: EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 30),
+                            child: Text(
+                              'Distribuya el cafe con el cosito, presione con fuerza moderada con el tamper, coloque el filtro en su maquina espresso. recuerde pesar la taza y tarar la balanza. comienze la extraccion, cuando el peso en taza llegue a $strGramosTaza corte la extraccion.',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                              textAlign: TextAlign.justify,
                             ),
                           ),
                           Cronometro(),
@@ -139,11 +185,12 @@ class DetailsPage extends StatelessWidget {
                             margin: EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 30),
                             child: Text(
-                              'El tiempo de extraccion debe estar entre 23seg-26seg si el tiempo esta por debajo de este rango tal, si esta por encima lo otro.',
+                              'El tiempo de extraccion debe estar entre $tiempo si el tiempo esta por debajo de este rango haga tal cosa, si esta por encima haga tal otro.',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                               ),
+                              textAlign: TextAlign.justify,
                             ),
                           ),
                         ],
@@ -159,148 +206,3 @@ class DetailsPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-//       backgroundColor: Colors.black,
-//       appBar: AppBar(
-//         backgroundColor: Colors.black,
-//       ),
-//       body: SingleChildScrollView(
-//         
-//           child: Stack(
-//             children: [
-//               Column(
-//                 children: [
-//                   Container(
-//                     margin: EdgeInsets.all(10),
-//                     color: Colors.transparent,
-//                     child: ClipRRect(
-//                       borderRadius: BorderRadius.circular(20),
-//                       child: Image.asset(
-//                         image,
-//                         height: MediaQuery.of(context).size.height * .6,
-//                       ),
-//                     ),
-//                   ),
-//                   Container(
-//                     margin: EdgeInsets.all(12),
-//                     width: MediaQuery.of(context).size.width * .8,
-//                     padding: EdgeInsets.all(8),
-//                     child: Opacity(
-//                       opacity: 1,
-//                       child: Text(
-//                         'El café expreso (también llamado café exprés, express, espresso o solo) es una forma de preparación de café originada en Italia.1​ Debe su término a la obtención de esta bebida a través de una cafetera expreso.2​ Se caracteriza por su rápida preparación a una alta presión y por un sabor y textura más concentrados',
-//                         textAlign: TextAlign.justify,
-//                         style: TextStyle(color: Colors.white),
-//                       ),
-//                     ),
-//                   ),
-//                   // CalibrateWidget(),
-//                   // SizedBox(
-//                   //   height: 30,
-//                   // ),
-//                   // Cronometro(),
-//                   // Container(
-//                   //   width: 300,
-//                   //   color: Colors.red,
-//                   //   child: TextField(
-//                   //     onChanged: (value) => print(value),
-//                   //   ),
-//                   // ),
-//                 ],
-//               ),
-//               Column(
-//                 mainAxisAlignment: MainAxisAlignment.center,
-//                 children: [
-//                   Container(
-//                     height: MediaQuery.of(context).size.height * .4 + 1,
-//                   ),
-//                   Center(
-//                     child: Opacity(
-//                       opacity: .7,
-//                       child: Container(
-//                         width: MediaQuery.of(context).size.width * .95 + 2,
-//                         height: MediaQuery.of(context).size.height * .21 + 1,
-//                         decoration: BoxDecoration(
-//                             borderRadius: BorderRadius.circular(20),
-//                             color: Colors.black),
-//                       ),
-//                     ),
-//                   )
-//                 ],
-//               ),
-//               Column(children: [
-//                 Container(
-//                     height: MediaQuery.of(context).size.height * .42,
-//                     child: Container()),
-//                 Container(
-//                   width: 320,
-//                   child: Row(children: [
-//                     Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Text(
-//                           "title",
-//                           style: TextStyle(
-//                             color: Colors.white,
-//                             fontSize: 30,
-//                           ),
-//                         ),
-//                         SizedBox(
-//                           height: 10,
-//                         ),
-//                         SizedBox(
-//                           width: 200,
-//                           child: Text(
-//                             "aaaaaaaaaaaaaasdaseeeeeeeeeedescripciondellapreparacionsadasdasldasdasd",
-//                             style: TextStyle(
-//                               color: Colors.white,
-//                               fontSize: 16,
-//                             ),
-//                             maxLines: 3,
-//                           ),
-//                         ),
-//                         SizedBox(
-//                           height: 10,
-//                         ),
-//                         Row(
-//                           children: [
-//                             Icon(
-//                               Icons.star_outlined,
-//                               color: Colors.orange,
-//                             ),
-//                             Text(
-//                               '4.5',
-//                               style: TextStyle(
-//                                 color: Colors.white,
-//                                 fontSize: 20,
-//                                 fontWeight: FontWeight.bold,
-//                               ),
-//                             ),
-//                             Text("ss")
-//                           ],
-//                         )
-//                       ],
-//                     ),
-//                     Column(
-//                       children: [
-//                         Row(
-//                           children: [],
-//                         )
-//                       ],
-//                     )
-//                   ]),
-//                 ),
-//               ]),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

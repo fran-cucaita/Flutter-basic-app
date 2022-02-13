@@ -56,6 +56,7 @@ class _CalibrateWidgetState extends State<CalibrateWidget> {
                       onChanged: (value) {
                         print(value);
                         // n = int.parse(value);
+                        setState(() {});
                       },
                       decoration: InputDecoration(
                         focusColor: Colors.amber,
