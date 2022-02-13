@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_application/widgets/calibrate_widget.dart';
 import 'package:test_application/widgets/cronometro.dart';
-
+import 'package:styled_text/styled_text.dart';
 import 'home_page.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -137,12 +136,22 @@ class DetailsPage extends StatelessWidget {
                             alignment: Alignment.topLeft,
                             margin: EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 30),
-                            child: Text(
-                              'En un filtro doble coloque entre $gramosmin y $gramosmax de Café $marca.',
+                            child: StyledText(
+                              text:
+                                  'En un filtro doble coloque entre <myTag>$gramosmin</myTag> y <myTag>$gramosmax</myTag> de Café <myTag>$marca</myTag>.',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                               ),
+                              tags: {
+                                'myTag': StyledTextTag(
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.orange,
+                                  ),
+                                ),
+                              },
                               textAlign: TextAlign.justify,
                             ),
                           ),
@@ -170,12 +179,22 @@ class DetailsPage extends StatelessWidget {
                             alignment: Alignment.topLeft,
                             margin: EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 30),
-                            child: Text(
-                              'Distribuya el cafe con el cosito, presione con fuerza moderada con el tamper, coloque el filtro en su maquina espresso. recuerde pesar la taza y tarar la balanza. comienze la extraccion, cuando el peso en taza llegue a $strGramosTaza corte la extraccion.',
+                            child: StyledText(
+                              text:
+                                  'Distribuya el cafe con el cosito, presione con fuerza moderada con el tamper, coloque el filtro en su maquina espresso. recuerde pesar la taza y tarar la balanza. comienze la extraccion, cuando el peso en taza llegue a <myTag>$strGramosTaza</myTag> corte la extraccion.',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                               ),
+                              tags: {
+                                'myTag': StyledTextTag(
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.orange,
+                                  ),
+                                ),
+                              },
                               textAlign: TextAlign.justify,
                             ),
                           ),
@@ -184,13 +203,23 @@ class DetailsPage extends StatelessWidget {
                             alignment: Alignment.topLeft,
                             margin: EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 30),
-                            child: Text(
-                              'El tiempo de extraccion debe estar entre $tiempo si el tiempo esta por debajo de este rango haga tal cosa, si esta por encima haga tal otro.',
+                            child: StyledText(
+                              text:
+                                  'El tiempo de extraccion debe estar entre <myTag>$tiempo</myTag> si el tiempo esta por debajo de este rango haga tal cosa, si esta por encima haga tal otro.',
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                               ),
                               textAlign: TextAlign.justify,
+                              tags: {
+                                'myTag': StyledTextTag(
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    color: Colors.orange,
+                                  ),
+                                ),
+                              },
                             ),
                           ),
                         ],
