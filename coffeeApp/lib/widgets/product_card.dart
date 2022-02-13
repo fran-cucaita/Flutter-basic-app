@@ -1,62 +1,88 @@
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({Key? key}) : super(key: key);
-
+  const ProductCard({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.price,
+  }) : super(key: key);
+  final String image;
+  final String title;
+  final String price;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {},
-      child: Column(
-        children: [
-          SizedBox(
-            height: 12,
+      child: Container(
+        margin: EdgeInsets.all(8),
+        color: Colors.transparent,
+        height: 200,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                colors: [
+                  const Color(0xFF212121),
+                  const Color(0xff484848),
+                ],
+                begin: const FractionalOffset(0.0, 0.0),
+                end: const FractionalOffset(1.0, 1.0),
+                stops: [0.0, 1.0],
+                tileMode: TileMode.clamp),
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.grey[800],
           ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8.0),
-            child: Image.asset(
-              'lib/assets/chemex.jpg',
-              width: 130,
-            ),
-          ),
-          const SizedBox(
-            height: 12,
-          ),
-          Row(
+          padding: EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: Image.asset(
+                  image,
+                  width: 130,
+                  height: 130,
+                ),
+              ),
               Container(
-                padding: EdgeInsets.all(8),
-                width: 68,
+                margin: EdgeInsets.symmetric(horizontal: 0, vertical: 4),
                 child: Text(
-                  '100.000',
-                  textAlign: TextAlign.start,
-                  style: const TextStyle(
+                  title,
+                  style: TextStyle(
                     color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
               ),
-              SizedBox(
-                width: 65,
-                child: Icon(
-                  Icons.shopping_cart_outlined,
-                  color: Colors.orange,
+              Container(
+                width: 130,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Text(
+                        price,
+                        textAlign: TextAlign.start,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Icon(
+                        Icons.shopping_cart_outlined,
+                        color: Colors.orange,
+                      ),
+                    ),
+                  ],
                 ),
-
-                // Text(
-                //   'Carrito',
-                //   textAlign: TextAlign.end,
-                //   style: const TextStyle(
-                //     color: Colors.orange,
-                //     fontSize: 16,
-                //     fontWeight: FontWeight.w700,
-                //   ),
-                // ),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

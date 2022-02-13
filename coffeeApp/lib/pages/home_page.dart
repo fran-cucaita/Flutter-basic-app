@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:test_application/pages/details_page.dart';
+import 'package:test_application/pages/recipes_page.dart';
 import 'package:test_application/routes/routes.dart';
+import 'package:test_application/widgets/product_card.dart';
 import 'package:test_application/widgets/recipe_card.dart';
 import 'package:test_application/widgets/tools_button.dart';
 
@@ -84,12 +86,20 @@ class HomePage extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "See all",
-                    style: TextStyle(
-                      color: Colors.orange,
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => (RecipesPage())));
+                    },
+                    child: Text(
+                      "See all",
+                      style: TextStyle(
+                        color: Colors.orange,
+                      ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
@@ -156,18 +166,45 @@ class HomePage extends StatelessWidget {
                         fontSize: 20,
                         fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    "See all",
-                    style: TextStyle(
-                      color: Colors.orange,
-                    ),
-                  ),
                 ],
               ),
             ),
             Column(
               children: [
                 Center(child: ButtonTools()),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                  width: MediaQuery.of(context).size.width * 1,
+                  height: 250,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: [
+                        ProductCard(
+                          image: 'lib/assets/products/aeroPress.jpg',
+                          title: "AeroPress",
+                          price: '1,010.000 COP',
+                        ),
+                        ProductCard(
+                          image: 'lib/assets/products/chemex.jpg',
+                          title: "Chemex",
+                          price: '10.000 COP',
+                        ),
+                        ProductCard(
+                          image: 'lib/assets/products/V60.jpg',
+                          title: "V60",
+                          price: '600.000 COP',
+                        ),
+                        ProductCard(
+                          image: 'lib/assets/products/francesa.jpg',
+                          title: "Francesa",
+                          price: '600.000 COP',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             )
           ],

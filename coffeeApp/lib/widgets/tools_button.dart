@@ -15,9 +15,9 @@ class ButtonTools extends StatefulWidget {
 class _ButtonToolsState extends State<ButtonTools> {
   final List<bool> _selections = [true, false, false, false, false];
   final List<String> _items = [
+    "Drippers",
     "Fliters",
     "Coffee",
-    "Drippers",
     "Machines",
     "Accesorios",
   ];
@@ -72,21 +72,6 @@ class _ButtonToolsState extends State<ButtonTools> {
               borderColor: Colors.grey[800],
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 0, horizontal: 0),
-            width: MediaQuery.of(context).size.width * 1,
-            height: 250,
-            color: Colors.grey[900],
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                ProductCard(),
-                ProductCard(),
-                ProductCard(),
-                ProductCard()
-              ],
-            ),
-          )
         ],
       ),
     );
